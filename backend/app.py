@@ -37,6 +37,7 @@ def build_system_prompt(prompt_data: dict) -> str:
     pedagogy = prompt_data.get("pedagogical_strategy", [])
     tone = prompt_data.get("tone_and_style", [])
     out_of_scope = prompt_data.get("out_of_scope_response", "")
+    code_request_response = prompt_data.get("code_request_response", "")
     knowledge = prompt_data.get("knowledge", [])
 
     sections = [
@@ -49,6 +50,9 @@ def build_system_prompt(prompt_data: dict) -> str:
 
     sections.extend([f"{idx + 1}. {rule}" for idx, rule in enumerate(rules)])
     sections.extend([
+        "",
+        "RESPUESTA OBLIGATORIA CUANDO PIDEN CODIGO SOBRE UN TEMA DEL CURSO",
+        code_request_response,
         "",
         "RESPUESTA OBLIGATORIA PARA TEMAS FUERA DE CONTENIDO",
         out_of_scope,

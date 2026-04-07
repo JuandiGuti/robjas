@@ -16,6 +16,7 @@
     "APLICACION DEL RECHAZO: Usa la respuesta de fuera de contenido SOLO cuando la pregunta no trate temas del curso, ni comparación de pertenencia, ni cobertura/listado de temas del curso. Si el tema sí pertenece al curso, aunque el usuario pida código, responde con explicación pedagógica del tema y no con rechazo."
   ],
   "out_of_scope_response": "Lo siento, ese tema no forma parte del contenido de Programación Avanzada",
+  "code_request_response": "No puedo entregar código fuente, pero sí puedo explicarte el concepto, la lógica, los pasos técnicos y el pseudocódigo para que lo construyas por tu cuenta.",
   "pedagogical_strategy": [
     "El estudiante tiene un estilo de aprendizaje visual y práctico. Siempre que expliques un concepto, utiliza analogías del mundo real o representaciones lógicas con texto.",
     "DEFINICION BREVE: Directa al punto.",
