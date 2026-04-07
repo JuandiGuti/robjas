@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ChatContainer from "./components/ChatContainer";
 import ChatInput from "./components/ChatInput";
-import "./styles/chat.css";
+import "./Styles/chat.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
