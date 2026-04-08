@@ -35,7 +35,8 @@ function ChatInput({ onSend, loading }) {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
       handleSend();
     }
   };
@@ -119,23 +120,33 @@ function ChatInput({ onSend, loading }) {
 
   return (
     <div className="chat-input-container">
-      <input
-        type="text"
+      <textarea
         className="chat-input"
         placeholder="Escribe tu pregunta..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
+        rows={2}
         disabled={loading || transcribing}
       />
 
-      <button className={`mic-button ${recording ? "recording" : ""}`} onClick={handleRecord} disabled={loading || transcribing}>
-        {recording ? "Detener" : transcribing ? "Transcribiendo..." : "Hablar"}
-      </button>
+      <div className="chat-actions">
+        <button
+          className={`mic-icon-button ${recording ? "recording" : ""}`}
+          onClick={handleRecord}
+          disabled={loading || transcribing}
+          title={recording ? "Detener grabacion" : transcribing ? "Transcribiendo" : "Grabar voz"}
+          aria-label={recording ? "Detener grabacion" : transcribing ? "Transcribiendo" : "Grabar voz"}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 15a4 4 0 0 0 4-4V7a4 4 0 0 0-8 0v4a4 4 0 0 0 4 4zm7-4a1 1 0 1 0-2 0 5 5 0 0 1-10 0 1 1 0 1 0-2 0 7 7 0 0 0 6 6.92V21H8a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2h-3v-3.08A7 7 0 0 0 19 11z" />
+          </svg>
+        </button>
 
-      <button className="send-button" onClick={handleSend} disabled={loading || transcribing || recording}>
-        {loading ? "Enviando..." : "Enviar"}
-      </button>
+        <button className="send-button" onClick={handleSend} disabled={loading || transcribing || recording}>
+          {loading ? "Enviando..." : "Enviar"}
+        </button>
+      </div>
     </div>
   );
 }

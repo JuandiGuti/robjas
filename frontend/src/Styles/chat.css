@@ -118,6 +118,7 @@ body {
 
 .chat-input-container {
   display: flex;
+  align-items: flex-end;
   gap: 12px;
   padding: 18px;
   background: rgba(255, 255, 255, 0.06);
@@ -131,7 +132,18 @@ body {
   border: none;
   outline: none;
   font-size: 15px;
+  line-height: 1.45;
   background: rgba(255, 255, 255, 0.95);
+  min-height: 52px;
+  max-height: 160px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.chat-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .send-button {
@@ -156,28 +168,36 @@ body {
   cursor: not-allowed;
 }
 
-.mic-button {
-  padding: 14px 18px;
+.mic-icon-button {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: none;
-  border-radius: 14px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #0ea5e9, #0284c7);
   color: white;
-  font-size: 14px;
-  font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.mic-button:hover {
+.mic-icon-button svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.mic-icon-button:hover {
   transform: translateY(-1px);
   opacity: 0.95;
 }
 
-.mic-button.recording {
+.mic-icon-button.recording {
   background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
-.mic-button:disabled {
+.mic-icon-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
@@ -242,10 +262,22 @@ body {
 
   .chat-input-container {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chat-actions {
+    width: 100%;
+    justify-content: flex-end;
   }
 
   .send-button {
     width: 100%;
+  }
+
+  .mic-icon-button {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
   }
 
   .metrics-modal {
