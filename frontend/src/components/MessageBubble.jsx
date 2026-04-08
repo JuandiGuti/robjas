@@ -68,7 +68,7 @@ function MessageBubble({ text, sender }) {
             <ReactMarkdown>{text}</ReactMarkdown>
 
             <button className="speak-button" onClick={speak} disabled={speaking}>
-              {speaking ? "Generando audio..." : "🔊 Escuchar"}
+              {speaking ? "Generando audio..." : "Escuchar"}
             </button>
           </div>
         ) : (

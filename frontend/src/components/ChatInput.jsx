@@ -130,7 +130,7 @@ function ChatInput({ onSend, loading }) {
       />
 
       <button className={`mic-button ${recording ? "recording" : ""}`} onClick={handleRecord} disabled={loading || transcribing}>
-        {recording ? "Detener" : transcribing ? "Transcribiendo..." : "🎤 Hablar"}
+        {recording ? "Detener" : transcribing ? "Transcribiendo..." : "Hablar"}
       </button>
 
       <button className="send-button" onClick={handleSend} disabled={loading || transcribing || recording}>

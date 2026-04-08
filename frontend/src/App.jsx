@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ChatContainer from "./components/ChatContainer";
 import ChatInput from "./components/ChatInput";
+import MetricsDashboard from "./components/MetricsDashboard";
 import "./Styles/chat.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
@@ -8,6 +9,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000
 function App() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showMetrics, setShowMetrics] = useState(false);
 
   const sendMessage = async (message) => {
     const userMessage = { text: message, sender: "user" };
@@ -56,11 +58,32 @@ function App() {
         <div className="chat-header">
           <h1>AIng. ROBjas</h1>
           <p>Programación Avanzada</p>
+          <button 
+            className="btn-metrics-toggle"
+            onClick={() => setShowMetrics(!showMetrics)}
+            title="Ver métricas de uso"
+          >
+            {showMetrics ? "Cerrar" : "Ver"} metricas
+          </button>
         </div>
 
         <ChatContainer messages={messages} />
         <ChatInput onSend={sendMessage} loading={loading} />
       </div>
+
+      {showMetrics && (
+        <div
+          className="metrics-modal-backdrop"
+          onClick={() => setShowMetrics(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Panel de métricas"
+        >
+          <div className="metrics-modal" onClick={(e) => e.stopPropagation()}>
+            <MetricsDashboard onClose={() => setShowMetrics(false)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
